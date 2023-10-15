@@ -1,0 +1,124 @@
+@use 'scss/reset';
+@use 'scss/root';
+
+/* Utilities */
+.flex {
+  display: flex;
+  flex-wrap: wrap;  
+}
+
+html, body, section {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	width: 100dvw;
+	height: 100dvh;
+	font-family: var(--ff-body);
+	font-size: var(--fs-body);
+	color: var(--neutral-1);
+	background: var(--neutral-4);
+	overflow: hidden;
+
+	@extend .flex;
+	justify-content: center;
+	align-content: center;
+
+		
+	@media screen and (max-width: 700px) {
+		height: 100%;
+		overflow-y: scroll;
+		height: auto;
+	}	
+	
+}
+
+.calculator-container {
+	margin: 0;
+	padding: 0;
+	@media screen and (max-width: 700px) {
+		width: 100%;
+	}
+}
+
+.title {
+ 	text-align: center;
+	font-size: var(--fs-header);
+	font-weight: var(--fw-semi-bold);
+}
+
+.container {
+	margin-inline: auto;
+	width: fit-content;
+	background: var(--neutral-4);
+	border: 3px solid var(--neutral-5);
+	border-radius: 10px;
+	padding: 0.5rem;
+
+	@media screen and (max-width: 350px) {
+		width: 100%;
+	}
+}
+
+.display-container {
+	height: 75px;
+	display: grid;
+	line-height: 0;
+	gap: 0px;
+}
+
+.operation-output, .operation-input {
+	text-align: right;
+	color: var(--neutral-1);
+}
+
+.operation-output {
+	font-size: 0.75rem;
+}
+
+.operation-input {
+	font-size: 1.30rem;
+	font-weight: var(--fw-semi-bold);
+}
+
+.calc-buttons {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 3px;
+
+	@media screen and (max-width: 350px) {
+		grid-template-columns: repeat(auto-fit, minmax(60px,1fr));
+	}
+}
+
+.calc-buttons button {
+	cursor: pointer;
+	padding: 15px 30px;
+	color: var(--neutral-1);
+	font-size: 1.15rem;
+	font-weight: var(--fw-semi-bold);
+	background: linear-gradient( 
+		135deg,
+		var(--neutral-2),
+		var(--neutral-4)
+	);
+	border: 1px solid var(--neutral-5);
+	border-radius: 5px;
+}
+
+.calc-buttons button:hover, .calc-buttons button:active {
+	background: var(--neutral-5);
+	border-color: var(--neutral-4);
+	transition: 0.20s ease-in-out;
+}
+
+.calc-buttons button:first-child, .calc-buttons button:nth-child(16)  {
+	grid-column-start: 1;
+	grid-column-end: 3;
+}
+
+.calc-buttons button:nth-child(15) {
+	grid-row: 4/6;
+	grid-column: 4/4;
+}
